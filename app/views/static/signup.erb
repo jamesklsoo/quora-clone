@@ -1,0 +1,75 @@
+<div class="bg-image">
+  <div class="signup-login-box">
+
+    <div class="landing-box">
+      <div class="landing-image"></div>
+      <h2 class="landing-text">The platform to know about everything under the Sun</h2>
+    </div>
+
+    <div class="user-choice-box">
+      <button class="btn btn-default signup-button signup-login-button">Sign Up</button>
+      <button class="btn btn-default login-button signup-login-button">Log In</button>
+    </div>
+
+    <div class="signup">
+      <div class="box-text">
+        <h2>Sign up for an account!</h2>
+      </div>
+
+      <form action="/signup" method="post">
+        <div style="display: table-column;"></div>
+        <div style="display: table-column; width:90%;"></div>
+        <p>
+          <label for="first_name">First name:</label>
+          <input type="text" placeholder="Please enter first name" name="user[first_name]" required>
+        </p>
+        <p>
+          <label for="last_name">Last name:</label>
+          <input type="text" placeholder="Please enter last name" name="user[last_name]" required>
+        </p>
+        <p>
+          <label for="email">Email:</label>
+          <input type="text" placeholder="Please enter email address" name="user[email]" required>
+        </p>
+        <p>
+          <label for="password">Password:</label>
+          <input type="password" placeholder="Please enter password" name="user[password]" required>
+        </p>
+        <p>
+          <label for="password_verification">Enter password again:</label>
+          <input type="password" placeholder="Please enter password again" name="user[password_confirmation]" required>
+        </p>
+        <div class="box-buttons">
+          <a class="cancel-button">Cancel</a>
+          <button class="btn btn-primary" type="submit" value="Sign Up!">Sign Up!</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="login">
+      <div class="box-text">
+        <h2>Already have an account?</h2>
+        <h3>Login!</h3>
+      </div>
+
+      <form action="/login" method="post">
+        <div style="display: table-column;"></div>
+        <div style="display: table-column; width:90%;"></div>
+        <p>
+          <label for="email">Email:</label>
+          <input type="text" placeholder="Please enter email address" name="user[email]" required>
+        </p>
+        <p>
+          <label for="password">Pasword:</label>
+          <input type="password" placeholder="Please enter password" name="user[password]" required>
+        </p>
+
+        <div class="box-buttons">
+          <a class="cancel-button">Cancel</a>
+          <button class="btn btn-primary" type="submit">Log In!</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

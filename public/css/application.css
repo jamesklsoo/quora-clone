@@ -1,0 +1,401 @@
+html {
+  font-family: "Arial",Helvetica,Arial,sans-serif;
+}
+
+.bg-image {
+  background-image: url(../../img/drawings_diversity_characters_signs_colorful_63651.jpg);
+  background-size: 2557px 1800px;
+  height: 1800px;
+  width: 2557px;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: fixed;
+  left: calc(50% - 878.5px);
+  opacity: .9;
+  bottom: 0;
+}
+
+.navbar {
+  border-top: 2px solid #b92b27;
+  box-shadow: 0 2px 2px #888888;
+  min-height: 50px;
+  max-height: inherit;
+  position: fixed;
+  width: 100%;
+  background-color: white;
+}
+
+.navbar-header {
+  height: 100%;
+  max-height: 50px;
+  width: 100%;
+  text-align: center;
+}
+
+body {
+  height: 100%;
+  word-wrap: break-word;
+  color: #333;
+  font-size: 13px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 54px;
+}
+
+.nbar-button {
+  top:0;
+  right:0;
+  float: right;
+  position:absolute;;
+  border: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #999;
+}
+
+.nbar-button:hover {
+  color: #b92b27;
+}
+
+.nbar-button li {
+  width: 100%;
+}
+
+.logo {
+  background-size: 165px 30px;
+  height: 30px;
+  width: 165px;
+  background-image: url('../img/quoree.png');
+  display: block;
+  margin: 0;
+  background-position: center center;
+  background-repeat: no-repeat;
+  float: left;
+}
+
+.form-container {
+  margin:auto;
+  text-align:center;
+  padding-top:9px;
+  margin-left:20%;
+  width: 60%;
+}
+
+.signup-login-box {
+  width: 650px;
+  height: 90%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: auto;
+  overflow-y: hidden;
+  top: 10%;
+}
+
+.landing-image {
+  background-image: url('../../img/quoree.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 224px 82px;
+  width: 650px;
+  height: 50%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  overflow-y: hidden;
+  top: 10%;
+}
+
+.landing-box {
+  width: 650px;
+  height: 30%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  overflow-y: hidden;
+  top: 10%;
+  background: white;
+}
+
+.landing-text {
+  font-size: 19px;
+  text-align: center;
+  margin-top: 115px;
+  color: black;
+}
+
+.user-choice-box {
+  width: 650px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  overflow-y: hidden;
+  top: 30%;
+  text-align: center;
+}
+
+.signup {
+  display: none;
+  width: 650px;
+  height: 50%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  overflow-y: hidden;
+  top: 10%;
+  text-align: center;
+  background-color: #62CEE8;
+}
+
+.login {
+  display: none;
+  width: 650px;
+  height: 50%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  overflow-y: hidden;
+  top: 10%;
+  text-align: center;
+  background-color: #62CEE8;
+}
+
+.box-text {
+  white-space: nowrap;
+  text-align: center;
+}
+
+.box-buttons {
+  position: absolute;
+  right: 0;
+  margin-top: 10px;
+}
+
+.signup-login-button {
+  font-size: 20px;
+  color: #999;
+  background-color: #b92b27;
+  border-color: #ccc;
+  width: 200px;
+  height: 70;
+  margin: 50px 10px;
+}
+
+.signup-login-button:hover {
+  color: #b92b27;
+  background-color: #999;
+}
+
+form  { display: table;      }
+
+p     {
+  display: table-row;
+  padding: 2px;
+}
+
+label {
+  display: table-cell;
+  text-align: right;
+  white-space: nowrap;
+}
+
+input {
+  display: table-cell;
+  width: 90%;
+}
+
+.body-wrapper {
+  margin: 0 20%;
+  width: 60%;
+}
+
+.question-box {
+  border-bottom: 1px solid #aaa;
+}
+
+.question-text {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.25;
+}
+
+.question-detail-text {
+  font-style: italic;
+}
+
+.question-description-text {
+  font-weight: 500;
+  color: #999;
+}
+
+.answer-text-box {
+  height: 200px;
+  width: 550px;
+}
+
+.individual-answer {
+  border-bottom: 1px solid #aaa;
+}
+
+.answer-user {
+  font-weight: 800;
+}
+
+.answer-details {
+  font-weight: 500;
+  color: #aaa;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+a {
+  text-decoration: none !important;
+  color: #333;
+}
+
+a:hover {
+  text-decoration: none !important;
+  color: #333;
+}
+
+.button-container {
+  display: inline-block !important;
+}
+
+.glyphicon {
+  position: relative;
+  top: 5;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  background-color: white;
+  font-size: 20;
+}
+
+.upvote {
+  background-color: transparent;
+  border: none;
+  color: #999;
+}
+
+.upvote:hover {
+  background-color: transparent;
+  border: none;
+  color: #333;
+}
+
+.upvote:visited {
+  background-color: transparent;
+  border: none;
+  color: #32A832;
+}
+
+.upvote:focus {
+  background-color: transparent;
+  border: none;
+  color: #32A832;
+  outline: none;
+}
+
+.downvote {
+  background-color: transparent;
+  border: none;
+  color: #999;
+}
+
+.downvote:hover {
+  background-color: transparent;
+  border: none;
+  color: #333;
+}
+
+.downvote:visited {
+  background-color: transparent;
+  border: none;
+  color: #BE1C1C;
+}
+
+.downvote:focus {
+  background-color: transparent;
+  border: none;
+  color: #BE1C1C;
+  outline: none;
+}
+
+.blur-page {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0,0,0,0.75);
+  z-index: 1000;
+}
+
+.input-bar {
+  width: 300%;
+  height: 34px;
+}
+
+.question-submit {
+  left: 346px;
+  position: relative;
+  border-radius: 0;
+}
+
+.dropdown-wide {
+  width: 100%;
+  border: none;
+  height: 35px;
+}
+
+.glyphicon-remove {
+  color: #999;
+  border: none;
+}
+
+.remove-div {
+  display: none;
+  width: 150px;
+  height: 50px;
+  position: relative;
+  top: -30;
+  left: 30;
+  background: antiquewhite;
+}
+
+.notice {
+  position: static;
+  text-align: center;
+  margin-top: 10px;
+  width: 200px;
+  height: 50px;
+  margin-left: auto;
+  padding: 17px;
+  margin-right: auto;
+  background: #3ea1bf;
+  border-radius: 10px
+}
+
+.error {
+  position: static;
+  text-align: center;
+  margin-top: 10px;
+  width: 200px;
+  height: 50px;
+  margin-left: auto;
+  padding: 17px;
+  margin-right: auto;
+  background: #BF3F3F;
+  border-radius: 10px
+}

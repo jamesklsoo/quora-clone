@@ -1,0 +1,90 @@
+<%time_diff_components = Time.diff(@question.created_at, Time.now.utc, '%y, %M, %w, %d %H %N %S')%>
+  <div class="body-wrapper container">
+    <div class="question-box row">
+      <p class="question-text">Question: <%=@question.question%></p>
+      <p class="question-detail-text"></p>
+      <p class="question-description-text">Asked by: <%=@question.user.first_name + " " + @question.user.last_name%></p>
+
+      <p class="question-description-text">Question posted <%=time_diff_components[:diff]%> ago</p>
+      <div>
+        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Answer this question</button>
+        <!-- Question vote -->
+        <form class="button-container vote-form" action="/question_vote" method="post">
+          <input type="hidden" name="question_id" value="<%=@question.id%>">
+          <input type="hidden" name="user_id" value="<%=@question.user.id%>">
+          <input type="hidden" name="vote_submit" value="true">
+            <button class="upvote" type="submit"><span><icon class="glyphicon glyphicon-thumbs-up"></icon></span></button><p class="button-container upvote-container"><%=@question.question_votes.where(vote: true).count%></p>
+        </form>
+        <form class="button-container vote-form" action="/question_vote" method="post">
+          <input type="hidden" name="question_id" value="<%=@question.id%>">
+          <input type="hidden" name="user_id" value="<%=@question.user.id%>">
+          <input type="hidden" name="vote_submit" value="false">
+          <button class="downvote" type="submit"><span><icon class="glyphicon glyphicon-thumbs-down"></icon></span></button><p class="button-container downvote-container"><%=@question.question_votes.where(vote: false).count%></p>
+        </form>
+      </div>
+    </div>
+
+    <div class="answer-box row">
+      <%if @question.answers.present?%>
+        <h2><%=@question.answers.count%> Answers</h2>
+        <%@question.answers.each do |a|%>
+          <div class="individual-answer">
+            <p class="answer-user"><%=a.user.fullname%></p>
+            <p style="margin-bottom: 30px;"><%=a.answer%></p>
+            <p class="answer-details">
+              Answered on <%=a.created_at%>
+
+              <!-- Answer vote -->
+              <form class="button-container answer-vote-form" action="/answer_vote" method="post">
+                <input type="hidden" name="answer_id" value="<%=a.id%>">
+                <input type="hidden" name="question_id" value="<%=@question.id%>">
+                <input type="hidden" name="user_id" value="<%=a.user.id%>">
+                <input type="hidden" name="vote_submit" value="true">
+                  <button class="upvote" type="submit"><span><icon class="glyphicon glyphicon-thumbs-up"></icon></span></button><p class="button-container answer-upvote-container"><%=a.answer_votes.where(vote: true).count%></p>
+              </form>
+              <form class="button-container answer-vote-form" action="/answer_vote" method="post">
+                <input type="hidden" name="answer_id" value="<%=a.id%>">
+                <input type="hidden" name="question_id" value="<%=@question.id%>">
+                <input type="hidden" name="user_id" value="<%=a.user.id%>">
+                <input type="hidden" name="vote_submit" value="false">
+                <button class="downvote" type="submit"><span><icon class="glyphicon glyphicon-thumbs-down"></icon></span></button><p class="button-container answer-downvote-container"><%=a.answer_votes.where(vote: false).count%></p>
+              </form>
+            </p>
+          </div>
+          <%end%>
+        <%else%>
+          <%="Nobody has answered this question yet!"%>
+        <%end%>
+
+    </div>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+
+          <form action="/answers" method="post">
+            <input type="hidden" name="question_id" value=<%=@question.id%>>
+            <div class="modal-body">
+              <input class="answer-text-box" type="text" name="answer_text">
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+          </form>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+</div>

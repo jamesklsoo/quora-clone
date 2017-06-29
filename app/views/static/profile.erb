@@ -1,0 +1,90 @@
+<div class="body-wrapper">
+
+  <!-- Show user's questions -->
+  <div class="user-questions-box">
+    <h1>Questions by <%=current_user.first_name%> </h1>
+
+    <% current_user.questions.all.reverse.each do |q| %>
+      <%time_diff_components = Time.diff(q.created_at, Time.now.utc, '%y, %M, %w, %d %H %N %S')%>
+      <!-- Question box -->
+      <div class="question-box">
+        <!-- Question -->
+        <div>
+          <p class="question-text"><a href="/question/<%=q.id%>">Question: <%=q.question%></a></p>
+          <p class="question-detail-text"></p>
+          <p class="question-description-text">Asked by: <%=q.user.first_name + " " + q.user.last_name%></p>
+          <p class="question-description-text">Question posted <%=time_diff_components[:diff]%> ago</p>
+          <div>
+
+            <!-- Modal -->
+            <div id="<%=q.id%>" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                  </div>
+
+                  <form action="/answers" method="post">
+                    <input type="hidden" name="question_id" value=<%=q.id%>>
+                    <h3><%=q.id%></h3>
+                    <div class="modal-body">
+                      <input class="answer-text-box" type="text" name="answer_text">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                  </form>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Answer -->
+            <%if q.answers.present?%>
+              <p class="answer-user"><%= q.answers.last.user.fullname %></p>
+              <p><%=q.answers.last.answer%></p>
+              <p class="answer-details">Answered on <%=q.answers.last.created_at%></p>
+            <%else%>
+              <%if q.answers.present? == false %>
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#<%=q.id%>" style="margin-bottom: 10px;">Answer</button>
+              <%end%>
+            <%end%>
+            <form class="button-container vote-form" action="/question_vote" method="post">
+              <input type="hidden" name="question_id" value="<%=q.id%>">
+              <input type="hidden" name="user_id" value="<%=q.user.id%>">
+              <input type="hidden" name="vote_submit" value="true">
+              <button class="upvote" type="submit"><span><icon class="glyphicon glyphicon-thumbs-up"></icon></span></button><p class="button-container upvote-container"><%=q.question_votes.where(vote: true).count%></p>
+            </form>
+            <form class="button-container vote-form" action="/question_vote" method="post">
+              <input type="hidden" name="question_id" value="<%=q.id%>">
+              <input type="hidden" name="user_id" value="<%=q.user.id%>">
+              <input type="hidden" name="vote_submit" value="false">
+              <button class="downvote" type="submit"><span><icon class="glyphicon glyphicon-thumbs-down"></icon></span></button><p class="button-container downvote-container"><%=q.question_votes.where(vote: false).count%></p>
+            </form>
+            <div class="button-container">
+              <form class="button-container" action="/questions/<%= q.id%>" method="post">
+                <input name="_method" type="hidden" value="delete">
+                <span>
+                  <button class="button-container glyphicon glyphicon-remove" type="submit" value= <%= q.id %>> </button>
+                </span>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+    </div>
+
+
+
+
+
+</div>
