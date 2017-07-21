@@ -46,9 +46,9 @@ gem 'figaro'
 gem 'clearance'
 gem 'faker
 
-group :development, :test do
+group :development :test do
   # Adding shotgun for local web hosting
-
+  gem 'shotgun'
 end
 
 group :production do
