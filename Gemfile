@@ -48,7 +48,7 @@ gem 'faker
 
 group :development, :test do
   # Adding shotgun for local web hosting
-  gem 'shotgun'
+
 end
 
 group :production do
