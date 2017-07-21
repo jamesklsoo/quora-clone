@@ -1,0 +1,12 @@
+<div class="row">
+
+<div class="col-md-2"></div>
+    <div class="col-md-8">
+      <h4 class="text-primary"><%=@tag.content%></h4>
+        <% @questions.each do |question| %>
+          <p><a href="/question/<%=question.id%>"><%= question.question %></a></p>
+          <hr>
+        <% end %>
+    </div>
+  <div class="col-md-2"></div>
+</div>

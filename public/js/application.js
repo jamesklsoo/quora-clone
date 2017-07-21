@@ -20,6 +20,10 @@ $(document).ready(function() {
     $('.blur-page').fadeOut('slow');
   });
 
+  $('.badge').click(function () {
+    $('.badge').fadeOut('slow');
+  });
+
   $('.vote-form').on('submit',function(event) {
     var form = $(this);
     var upcount = $('.upvote-container', this);

@@ -1,3 +1,11 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+<ul class="list-inline">
+      <%="Tags: "%><% @question.tags.each do |t| %>
+        <li><a href="/tags/<%=t.id%>"><%= t.content %></a></li>
+      <% end %>
+    </ul>
 <%time_diff_components = Time.diff(@question.created_at, Time.now.utc, '%y, %M, %w, %d %H %N %S')%>
   <div class="body-wrapper container">
     <div class="question-box row">
@@ -21,6 +29,7 @@
           <input type="hidden" name="vote_submit" value="false">
           <button class="downvote" type="submit"><span><icon class="glyphicon glyphicon-thumbs-down"></icon></span></button><p class="button-container downvote-container"><%=@question.question_votes.where(vote: false).count%></p>
         </form>
+        <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#tagModal">Add Tag</button>
       </div>
     </div>
 
@@ -57,7 +66,7 @@
         <%end%>
 
     </div>
-    <!-- Modal -->
+    <!-- Answer Modal -->
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
 
@@ -86,5 +95,23 @@
       </div>
     </div>
 
-
+<!-- Tag Modal -->
+    <div class="modal fade" id="tagModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Tags to Topic</h4>
+      </div>
+      <div class="modal-body form-group">
+        <form method="post" action="/questions/<%=@question.id%>/tags">
+          <input class="form-control" type="text" name="tag[content]" placeholder="What's your tag">
+          <input class="btn btn-primary" type="submit" value="Add Tag">
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -34,8 +34,17 @@ gem 'capybara'
 # Adding time difference
 gem 'time_diff'
 
+# paginate
+gem 'will_paginate', '~> 3.0.6'
+
 # Adding bcrypt
 gem 'bcrypt', '~> 3.1', '>= 3.1.7'
+
+# Adding other gems
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'figaro'
+gem 'clearance'
+gem 'faker
 
 group :development, :test do
   # Adding shotgun for local web hosting

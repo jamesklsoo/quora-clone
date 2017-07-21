@@ -1,12 +1,55 @@
 <div class="body-wrapper">
 
-  <%Question.includes(:user, answers: [:user]).all.reverse.each do |q|%>
+  <% if current_user %>
+  <% @q = Question.includes(:user, answers: [:user]).all.reverse.paginate(:page => params[:page], :per_page => 5) %>
+  <%= will_paginate @q%>
+  <% else %>
+      <nav class="navbar navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+
+          <!-- Logo -->
+          <a href="/" style="width: 100%; height: 100%; z-index: 999;">
+            <div class="logo"></div>
+          </a>        
+
+          <!-- User button -->
+          <button type="button" class="btn btn-default dropdown-toggle nbar-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Login/Sign Up">Login/Sign Up</button>
+            <ul class="dropdown-menu pull-right">
+              <li>
+                <form class="dropdown-wide" action="/signup" method="post">
+                  <button style="text-align: center;" type="submit" class="btn btn-default dropdown-wide">Login</button>
+                </form>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <form class="dropdown-wide" action="/signup" method="post">
+                  <button style="text-align: center;" id="logout" type="submit" class="btn btn-default dropdown-wide" value="Sign Up">Sign Up</button>
+                </form>
+              </li>
+            </ul>
+
+        </div>
+      </div>
+
+    </nav>
+  <h1>Login or Sign Up to use the full features</h1>
+    <% @q = Question.includes(:user, answers: [:user]).last(5).reverse %>
+  <% end %>
+
+  <% @q.each do |q| %>
+
   <%time_diff_components = Time.diff(q.created_at, Time.now.utc, '%y, %M, %w, %d %H %N %S')%>
   <!-- Question box -->
   <div class="question-box">
     <!-- Question -->
     <div>
+    <%if current_user%>
       <p class="question-text"><a href="/question/<%=q.id%>">Question: <%=q.question%></a></p>
+      <%else%>
+      <p class="question-text"><a>Question: <%=q.question%></a></p>
+
+      <%end%>
       <p class="question-detail-text"></p>
       <p class="question-description-text">Asked by: <%=q.user.first_name + " " + q.user.last_name%></p>
       <p class="question-description-text">Question posted <%=time_diff_components[:diff]%> ago</p>
@@ -72,14 +115,16 @@
           <input type="hidden" name="user_id" value="<%=q.user.id%>">
           <input type="hidden" name="vote_submit" value="true">
           <button class="upvote" type="submit"><span><icon class="glyphicon glyphicon-thumbs-up"></icon></span></button><p class="button-container upvote-container"><%=q.question_votes.where(vote: true).count%></p>
-        </form>
+        </form>       
         <form class="button-container vote-form" action="/question_vote" method="post">
           <input type="hidden" name="question_id" value="<%=q.id%>">
           <input type="hidden" name="user_id" value="<%=q.user.id%>">
           <input type="hidden" name="vote_submit" value="false">
-          <button class="downvote" type="submit"><span><icon class="glyphicon glyphicon-thumbs-down"></icon></span></button><p class="button-container downvote-container"><%=q.question_votes.where(vote: false).count%></p>
+          <button class="downvote" type="submit"><span><icon class="glyphicon glyphicon-thumbs-down"></icon></span></button><p class="button-container downvote-container"><%=q.question_votes.where(vote: false).count%>
+
+          </p>
         </form>
-        <% if q.user_id == current_user.id %>
+        <% if !current_user.nil? && q.user_id == current_user.id %>
         <div class="button-container">
           <form class="button-container" action="/questions/<%= q.id%>" method="post">
             <input name="_method" type="hidden" value="delete">

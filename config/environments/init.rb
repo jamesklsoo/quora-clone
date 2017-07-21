@@ -24,6 +24,10 @@ require 'uri'
 require 'time_diff'
 require 'active_support'
 require 'byebug'
+require 'will_paginate'
+require 'will_paginate/active_record'
+require 'will_paginate/view_helpers/sinatra'
+require 'will_paginate/array'
 ######################################################################
 
 
