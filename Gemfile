@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Ruby Version
-# ruby "2.2.1"
+ruby "2.2.1"
 
 # Adding Sinatra Drivers
 gem 'sinatra'
@@ -46,7 +46,7 @@ gem 'figaro'
 gem 'clearance'
 gem 'faker
 
-group :development :test do
+group :development, :test do
   # Adding shotgun for local web hosting
   gem 'shotgun'
 end
