@@ -46,12 +46,12 @@ gem 'figaro'
 gem 'clearance'
 gem 'faker
 
-group :development, :test do
+group :test, :production do
   # Adding shotgun for local web hosting
   gem 'shotgun'
 end
 
-group :production do
+group :development do
   # Heroku
   # ==================
   gem 'rails_12factor' # Heroku Gem Supports
