@@ -46,14 +46,15 @@ gem 'figaro'
 gem 'clearance'
 gem 'faker
 
-group :test, :production do
+group :development, :test do
   # Adding shotgun for local web hosting
   gem 'shotgun'
 end
 
-group :development do
+group :production do
   # Heroku
   # ==================
   gem 'rails_12factor' # Heroku Gem Supports
   gem 'puma' # Using puma for
+  gem 'pg'
 end
